@@ -48,7 +48,7 @@ TODO: flesh this definition out more and go through the feedback on #4741
 ```
 
 * always establishes a new cascading context
-** so it's not just for container queries, but also depth-based cascading overrides that have more power than specificity
+  * so it's not just for container queries, but also depth-based cascading overrides that have more power than specificity
 * if appropriate, tests media queries
-** what if the container doesn't have the necessary containment?  probably always false?  Implying the containment would be too weird, I think.
+  * what if the container doesn't have the necessary containment?  probably always false?  Implying the containment would be too weird, I think.
 * container-media-query is a subset of media queries, allowing only the [Viewport/Page Dimensions Media Features](https://drafts.csswg.org/mediaqueries-4/#mf-dimensions) (including `min-` and `max-` variants)
