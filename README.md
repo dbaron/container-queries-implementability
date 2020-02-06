@@ -37,7 +37,7 @@ to say "when calculating the size of the containing block in the given axis".
 (What this means, underneath, probably needs to be defined per layout system,
 as does the existing definition.)
 
-TODO: flesh this definition out more and go through the feedback on #4741
+**TODO**: flesh this definition out more and go through the feedback on #4741
 
 ## Scope-based CSS cascading
 
@@ -97,5 +97,5 @@ but also adds CSS syntax for scope-based cascading.
   * what if the container doesn't have the necessary containment?  probably always false?  Implying the containment would be too weird, I think.
 * container-media-query is a subset of media queries, allowing only the [Viewport/Page Dimensions Media Features](https://drafts.csswg.org/mediaqueries-4/#mf-dimensions) (including `min-` and `max-` variants)
 
-Issues:
+**Issues**:
 * Is the parsing disambiguated sufficiently?  In other words, are we OK assuming that when we hit an open parenthesis (that's not part of an existing selector function), it's the beginning of a media query and we're no longer parsing selectors.
