@@ -93,9 +93,43 @@ higher in the document tree.
 Thus this proposal is not only for container queries,
 but also adds CSS syntax for scope-based cascading.
 
-* if appropriate, tests media queries
-  * what if the container doesn't have the necessary containment?  probably always false?  Implying the containment would be too weird, I think.
-* container-media-query is a subset of media queries, allowing only the [Viewport/Page Dimensions Media Features](https://drafts.csswg.org/mediaqueries-4/#mf-dimensions) (including `min-` and `max-` variants)
+**Issue**: Is the parsing disambiguated sufficiently?
+In other words,
+are we OK assuming that when we hit an open parenthesis
+(that's not part of an existing selector function),
+it's the beginning of a media query and we're no longer parsing selectors?
 
-**Issues**:
-* Is the parsing disambiguated sufficiently?  In other words, are we OK assuming that when we hit an open parenthesis (that's not part of an existing selector function), it's the beginning of a media query and we're no longer parsing selectors.
+The optional `<container-media-query>` argument to this `@container` rule
+allows the rules inside it to match only if
+the container has the necessary containment rules, and
+the media query matches the container.
+Note that this wording means that *negated* media queries
+still won't match if the container doesn't have the necessary containment rules;
+this means that when the containment is not as required,
+then the entire rule will effectively be ignored.
+(**Issue**: I think this seems preferable to treating the media queries as false
+and then applying negation to them,
+although I'm not sure.)
+
+The `<container-media-query>` production is intended to be
+a subset of media queries,
+allowing only the
+[Viewport/Page Dimensions Media Features](https://drafts.csswg.org/mediaqueries-4/#mf-dimensions)
+(including `min-` and `max-` variants).
+However, these queries would have modified definitions so that
+their tests apply to the dimension of the container
+rather than to the dimensions of the viewport or page.
+
+The containment necessary for such a rule to operate would depend
+on which media queries are used:
+* if no media queries are used, no containment is necessary
+* if media queries testing only the block-axis size are used, then both `layout` and `block-size` containment are needed
+* if media queries testing only the inline-axis size are used, then both `layout` and `inline-size` containment are needed
+* if media queries testing both the block-axis size and inline-axis size are used, then both `layout` and `size` containment are needed.
+
+If the containment needed for any of the queries is not present,
+then the queries are considered not to match,
+and the rules inside are never applied.
+(**Issue**: Is this the right choice, or should queries be allowed separately across toplevel commas?)
+
+## Performance characteristics
