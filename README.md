@@ -38,6 +38,7 @@ to say "when calculating the size of the containing block in the given axis".
 as does the existing definition.)
 
 **TODO**: flesh this definition out more and go through the feedback on #4741
+... and figure out if this whole thing has a chance of actually working!
 
 ## Scope-based CSS cascading
 
