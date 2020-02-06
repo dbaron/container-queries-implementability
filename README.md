@@ -133,3 +133,27 @@ and the rules inside are never applied.
 (**Issue**: Is this the right choice, or should queries be allowed separately across toplevel commas?)
 
 ## Performance characteristics
+
+I believe the most substantial performance overhead of this feature
+in an implementation that is well-optimized for it
+should be that the implementation needs to
+switch more between styling and layout.
+The need for this switching may, in turn,
+reduce opportunities for parallelism in both styling and layout
+(although the later pass(es) might provide clearer opportunities for parallelism as well).
+
+In particular,
+this is because processing these queries requires that layout be done on the ancestors of the container
+before styling can be done on its descendants.
+
+This is still a substantial improvement on the workarounds used today,
+which perform an *extra* pass of styling and layout on the descendants of the container
+before (in at least some cases) correcting the styles to the final styles
+and then performing style and layout again.
+
+In other words, relative to a page that doesn't use this feature,
+things may be slower due to the increased separation of passes.
+But relative to a page that works around the lack of this feature in today's implementations,
+things should be faster because the number of passes is (in general) the same
+but duplicated work is avoided.
+
