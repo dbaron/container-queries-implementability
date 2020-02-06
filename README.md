@@ -39,7 +39,43 @@ as does the existing definition.)
 
 TODO: flesh this definition out more and go through the feedback on #4741
 
+## Scope-based CSS cascading
+
+The proposal I'm making here addresses the need for container queries,
+but it also addresses a second need that I'd like to explain a little further.
+It adds support for a different type of CSS cascading priority.
+
+CSS cascading has the existing concept of
+[specificity](https://drafts.csswg.org/selectors-4/#specificity-rules).
+This concept often doesn't work very well for authors of CSS.
+I believe that one of the reasons for this is that the specificity
+is based on selectors that match anywhere in the tree,
+and doesn't consider the proximity of the element selected by a selector
+to the target of the selector.
+
+Cascading Level 4 has added the concept of
+[scope](https://drafts.csswg.org/css-cascade-4/#cascade-scope)
+to the cascade level.
+I *think* this concept is currently only accessible through Web Components
+(although I'm not sure it's accessible through them).
+(It was previously accessible through scoped `<style>` elements,
+before they were removed.)
+This proposal makes it accessible through CSS syntax.
+The idea of **scope** is that a CSS rule can be associated with
+the subtree of a particular element in the tree,
+and those rules override CSS rules associated with any ancestor subtree.
+This feature allows authors to say that a particular set of CSS rules
+applies to a particular subtree of the document,
+and those rules override rules for subtrees higher in the document.
+
+Given that the syntax I'm proposing for container queries lends itself
+to adding this feature at the same time, I propose to do so.
+
 ## Proposal
+
+To address the need for container queries,
+I'm proposing a feature that both addresses container queries
+and also adds syntax for scope-based cascading to CSS.
 
 ```css
 @container <selector> (<container-media-query>)? {
@@ -47,8 +83,19 @@ TODO: flesh this definition out more and go through the feedback on #4741
 }
 ```
 
-* always establishes a new cascading context
-  * so it's not just for container queries, but also depth-based cascading overrides that have more power than specificity
+The `<selector>` given as an argument to this `@container` rule
+matches the container(s) to which the rules inside apply.
+The rules can match only that container or its descendants.
+These rules also apply in the CSS cascade at the
+[scope](https://drafts.csswg.org/css-cascade-4/#cascade-scope)
+of that container, so that they override rules for containers
+higher in the document tree.
+Thus this proposal is not only for container queries,
+but also adds CSS syntax for scope-based cascading.
+
 * if appropriate, tests media queries
   * what if the container doesn't have the necessary containment?  probably always false?  Implying the containment would be too weird, I think.
 * container-media-query is a subset of media queries, allowing only the [Viewport/Page Dimensions Media Features](https://drafts.csswg.org/mediaqueries-4/#mf-dimensions) (including `min-` and `max-` variants)
+
+Issues:
+* Is the parsing disambiguated sufficiently?  In other words, are we OK assuming that when we hit an open parenthesis (that's not part of an existing selector function), it's the beginning of a media query and we're no longer parsing selectors.
