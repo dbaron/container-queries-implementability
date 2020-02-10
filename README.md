@@ -133,6 +133,8 @@ then the queries are considered not to match,
 and the rules inside are never applied.
 (**Issue**: Is this the right choice, or should queries be allowed separately across toplevel commas?)
 
+**Todo**: selectors that reference the element that `<selector>` matches.  Should [`:scope`](https://drafts.csswg.org/selectors-4/#the-scope-pseudo) work here?
+
 ## Performance characteristics
 
 I believe the most substantial performance overhead of this feature
