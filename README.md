@@ -135,6 +135,8 @@ and the rules inside are never applied.
 
 **Todo**: selectors that reference the element that `<selector>` matches.  Should [`:scope`](https://drafts.csswg.org/selectors-4/#the-scope-pseudo) work here?
 
+**Todo**: what rules are allowed inside `@container`?
+
 ## Performance characteristics
 
 I believe the most substantial performance overhead of this feature
