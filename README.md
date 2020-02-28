@@ -1,6 +1,8 @@
 
 # Thoughts on an implementable path forward for Container Queries
 
+# WARNING: This is only really half-written at this point and not yet ready for wide review.
+
 The idea of Container Queries has been discussed widely,
 such as in [WICG/container-queries](https://github.com/WICG/container-queries/)
 and in [w3c/csswg-drafts#3852](https://github.com/w3c/csswg-drafts/issues/3852).
