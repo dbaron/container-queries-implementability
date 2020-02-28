@@ -135,6 +135,15 @@ then the queries are considered not to match,
 and the rules inside are never applied.
 (**Issue**: Is this the right choice, or should queries be allowed separately across toplevel commas?)
 
+The selectors on the rules inside the `@container` rule
+should probably match only *descendants* of the container element.
+It would be possible to match the container element itself
+for some properties but not others,
+since some properties would influence the size of the container
+that the query is testing against.
+It's probably most straightforward to just say that the rules apply
+only to descendants and not to the element itself.
+
 **Todo**: selectors that reference the element that `<selector>` matches.  Should [`:scope`](https://drafts.csswg.org/selectors-4/#the-scope-pseudo) work here?
 
 **Todo**: what rules are allowed inside `@container`?
