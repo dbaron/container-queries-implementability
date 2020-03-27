@@ -39,8 +39,35 @@ to say "when calculating the size of the containing block in the given axis".
 (What this means, underneath, probably needs to be defined per layout system,
 as does the existing definition.)
 
+### Containment in a single axis
+
+To explain what containment in a single axis means,
+we need to define it for each display type.
+
 **TODO**: flesh this definition out more and go through the feedback on #4741
 ... and figure out if this whole thing has a chance of actually working!
+
+#### ... `inline-size` containment for `display:block`
+
+#### ... `block-size` containment for `display:block`
+
+#### ... `inline-size` containment for `display:table`
+
+#### ... `block-size` containment for `display:table`
+
+#### ... `inline-size` containment for `display:table-cell`
+
+#### ... `block-size` containment for `display:table-cell`
+
+#### ... `inline-size` containment for `display:flex`
+
+#### ... `block-size` containment for `display:flex`
+
+#### ... `inline-size` containment for `display:grid`
+
+#### ... `block-size` containment for `display:grid`
+
+#### ... more cases that need to be handled?
 
 ## Scope-based CSS cascading
 
