@@ -49,7 +49,26 @@ we need to define it for each display type.
 
 #### ... `inline-size` containment for `display:block`
 
+This is relatively straightforward since block layout
+doesn't generally produce output in the inline dimension.
+
+I believe the only effect is that the computation of
+[intrinsic sizes](https://drafts.csswg.org/css-sizing-3/#intrinsic-size)
+in the inline axis assumes that the block has no contents.
+
 #### ... `block-size` containment for `display:block`
+
+It's not clear what the effect on intrinsic sizes should be for this,
+but I think the simplest answer is that
+the computation of
+[intrinsic sizes](https://drafts.csswg.org/css-sizing-3/#intrinsic-size)
+in *both* axes assumes that the block has no contents.
+(It's possible this could be refined once
+[it's clearer](https://github.com/w3c/csswg-drafts/issues/2890)
+what intrinsic sizes in the block axis are.)
+
+Furthermore, the final block-size computation during layout
+also needs to assume that the block has no contents.
 
 #### ... `inline-size` containment for `display:table`
 
