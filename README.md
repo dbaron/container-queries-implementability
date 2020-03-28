@@ -49,30 +49,49 @@ we need to define it for each display type.
 
 #### ... `inline-size` containment for `display:block`
 
-This is relatively straightforward since block layout
-doesn't generally produce output in the inline dimension.
-
-I believe the only effect is that the computation of
+The computation of
 [intrinsic sizes](https://drafts.csswg.org/css-sizing-3/#intrinsic-size)
 in the inline axis assumes that the block has no contents.
 
-#### ... `block-size` containment for `display:block`
+There is no effect on layout since
+block layout doesn't generally produce output in the inline dimension.
 
-It's not clear what the effect on intrinsic sizes should be for this,
-but I think the simplest answer is that
-the computation of
-[intrinsic sizes](https://drafts.csswg.org/css-sizing-3/#intrinsic-size)
-in *both* axes assumes that the block has no contents.
-(It's possible this could be refined once
+(It's not clear what the effect on
+intrinsic sizes in the block axis
+should be,
+but it will perhaps be clearer once
 [it's clearer](https://github.com/w3c/csswg-drafts/issues/2890)
 what intrinsic sizes in the block axis are.)
 
-Furthermore, the final block-size computation during layout
-also needs to assume that the block has no contents.
+#### ... `block-size` containment for `display:block`
+
+First, the computation of
+[intrinsic sizes](https://drafts.csswg.org/css-sizing-3/#intrinsic-size)
+in the block axis (whatever they mean in the first place)
+assumes that the block has no contents.
+
+Second, the final block-size computation during layout
+also assumes that the block has no contents.
 
 #### ... `inline-size` containment for `display:table`
 
+The computation of both
+[intrinsic sizes](https://drafts.csswg.org/css-sizing-3/#intrinsic-size)
+in the inline axis
+and the inline-size computed during layout
+assume that the table has no contents.
+
 #### ... `block-size` containment for `display:table`
+
+First, the computation of
+[intrinsic sizes](https://drafts.csswg.org/css-sizing-3/#intrinsic-size)
+in the block axis (whatever they mean in the first place)
+assumes that the table has no contents.
+
+Second, the final block-size computation during layout
+also assumes that the table has no contents.
+It's not clear to me what the resulting row block-sizes are,
+but they're presumably the same as whatever happens for `size` containment.
 
 #### ... `inline-size` containment for `display:table-cell`
 
