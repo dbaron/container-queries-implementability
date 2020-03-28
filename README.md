@@ -95,7 +95,13 @@ but they're presumably the same as whatever happens for `size` containment.
 
 #### ... `inline-size` containment for `display:table-cell`
 
+same as for `display: block`
+
 #### ... `block-size` containment for `display:table-cell`
+
+same as for `display: block`
+(with the caveat that the final block-size computation during layout
+is more complicated)
 
 #### ... `inline-size` containment for `display:flex`
 
