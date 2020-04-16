@@ -111,6 +111,10 @@ is more complicated)
 
 #### ... `block-size` containment for `display:grid`
 
+#### ... `inline-size` containment for `display:block` and multi-column
+
+#### ... `block-size` containment for `display:block` and multi-column
+
 #### ... more cases that need to be handled?
 
 ## Scope-based CSS cascading
