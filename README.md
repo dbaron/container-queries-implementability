@@ -103,17 +103,17 @@ same as for `display: block`
 (with the caveat that the final block-size computation during layout
 is more complicated)
 
-#### ... `inline-size` containment for `display:flex`
+#### ... containment for `display:flex` in the [main axis](https://drafts.csswg.org/css-flexbox-1/#main-axis)
 
-#### ... `block-size` containment for `display:flex`
+#### ... containment for `display:flex` in the [cross axis](https://drafts.csswg.org/css-flexbox-1/#cross-axis)
 
 #### ... `inline-size` containment for `display:grid`
 
 #### ... `block-size` containment for `display:grid`
 
-#### ... `inline-size` containment for `display:block` and multi-column
+#### ... `inline-size` containment for [multi-column](https://drafts.csswg.org/css-multicol/#multi-column-container)
 
-#### ... `block-size` containment for `display:block` and multi-column
+#### ... `block-size` containment for [multi-column](https://drafts.csswg.org/css-multicol/#multi-column-container)
 
 #### ... more cases that need to be handled?
 
