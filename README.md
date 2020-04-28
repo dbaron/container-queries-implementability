@@ -44,6 +44,45 @@ as does the existing definition.)
 To explain what containment in a single axis means,
 we need to define it for each display type.
 
+The current definition of containment uses a convenient shorthand:
+define `contain: size` to behave as though the element has no contents.
+This works in both dimensions.
+Implementing this is not quite so trivial for implementations:
+implementations need some custom code in the implementation of *each* display type,
+and maybe in more than one place for some of them,
+to act as though the element has no contents.
+But it is, nonetheless, a clear and simple definition that implementers can apply,
+although it might require a bit of work for implementers
+to find all the places in the code that they need to apply it.
+
+Describing containment in a single dimension is harder from a specification perspective,
+since the specification can no longer use
+the shortcut of assuming that the element has no contents.
+Roughly, it requires that we make that sort of assumption in some places but not others,
+so as to influence one dimension but not the other.
+So here I'm proposing to redefine containment in each axis
+by having the spec define each effect that containment has.
+
+These definitions have to ensure two things:
+* the combination of the effects that you'd get
+  from `contain: width` combined with `contain: height`
+  (or `contain: block-size` combined with `contain: inline-size`)
+  should add up to being equivalent to the current definition of `contain: size`:
+  act as though the box has no contents.
+* containment of one dimension
+  does mean that the contents don't affect the size in that dimension.
+
+Ideally, the definition will *also* ensure that
+the computation of the size in the second dimension
+works in a way that is as close as possible
+to how it would work without containment in the first dimension.
+
+Or, to put it another way,
+this approach means that the specification needs to take the approach
+that I believe implementations already take (at least Gecko's),
+which is adding a test in various places in the layout code
+to have some specific change in behavior when containment is present.
+
 **TODO**: flesh this definition out more and go through the feedback on #4741
 ... and figure out if this whole thing has a chance of actually working!
 
