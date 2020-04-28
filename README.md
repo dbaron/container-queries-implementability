@@ -144,7 +144,31 @@ is more complicated)
 
 #### ... containment for `display:flex` in the [main axis](https://drafts.csswg.org/css-flexbox-1/#main-axis)
 
+Both the [max-content](https://drafts.csswg.org/css-sizing-3/#max-content) [main size](https://drafts.csswg.org/css-flexbox-1/#main-size)
+and the [min-content](https://drafts.csswg.org/css-sizing-3/#min-content) [main size](https://drafts.csswg.org/css-flexbox-1/#main-size)
+are 0,
+since that is the result that
+[the normal rules](https://drafts.csswg.org/css-flexbox-1/#intrinsic-main-sizes)
+would produce
+if there are no flex items.
+
+No specfic change in the layout algorithm is needed because
+[the part of the layout algorithm where the contents influence the size](https://drafts.csswg.org/css-flexbox-1/#algo-available)
+uses the intrinsic sizes.
+
 #### ... containment for `display:flex` in the [cross axis](https://drafts.csswg.org/css-flexbox-1/#cross-axis)
+
+Both the [max-content](https://drafts.csswg.org/css-sizing-3/#max-content) [cross size](https://drafts.csswg.org/css-flexbox-1/#cross-size)
+and the [min-content](https://drafts.csswg.org/css-sizing-3/#min-content) [cross size](https://drafts.csswg.org/css-flexbox-1/#cross-size)
+are 0,
+since that is the result that
+[the normal rules](https://drafts.csswg.org/css-flexbox-1/#intrinsic-cross-sizes)
+would produce
+if there are no flex items.
+
+No specfic change in the layout algorithm is needed because
+[the part of the layout algorithm where the contents influence the size](https://drafts.csswg.org/css-flexbox-1/#algo-available)
+uses the intrinsic sizes.
 
 #### ... `inline-size` containment for `display:grid`
 
