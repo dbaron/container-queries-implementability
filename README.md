@@ -232,7 +232,7 @@ and also adds syntax for scope-based cascading to CSS.
 
 The `<selector>` given as an argument to this `@container` rule
 matches the container(s) to which the rules inside apply.
-The rules can match only that container or its descendants.
+The rules can match only that container's descendants.
 These rules also apply in the CSS cascade at the
 [scope](https://drafts.csswg.org/css-cascade-4/#cascade-scope)
 of that container, so that they override rules for containers
