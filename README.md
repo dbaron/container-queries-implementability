@@ -84,6 +84,13 @@ to have some specific change in behavior when containment is present.
 **TODO**: flesh this definition out more and go through the feedback on #4741
 ... and figure out if this whole thing has a chance of actually working!
 
+**ISSUE**: Florian points out that the definitions here aren't really sufficient,
+because a size in one dimension can, through ancestors,
+influence the size in the other dimension,
+for example through causing a scrollbar to be created.
+Need to work out whether this makes this proposal not workable,
+or whether there's a way around it.
+
 #### ... `inline-size` containment for `display:block`
 
 The computation of
