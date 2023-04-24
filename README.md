@@ -1,14 +1,10 @@
-<div style="font-weight: bold; margin: 2em; padding: 1em; border: thick solid;">
-
-This repository is no longer active.  The proposal here had some influence
+**This repository is no longer active.  The proposal here had some influence
 on the development of Container Queries in CSS.  Container Queries are now
 part of the [CSS Containment Module Level 3](https://www.w3.org/TR/css-contain-3/)
 and are [usable](https://caniuse.com/css-container-queries)
 across most major browser engines.
 Issues on container queries should be discussed
-[in the CSS Working Group's repository](https://github.com/w3c/csswg-drafts/labels/css-contain-3).
-
-</div>
+[in the CSS Working Group's repository](https://github.com/w3c/csswg-drafts/labels/css-contain-3).**
 
 # Thoughts on an implementable path forward for Container Queries
 
